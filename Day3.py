@@ -16,6 +16,8 @@ The following test should pass:
 node = Node('root', Node('left',Node('left.left')),Node('right'))
 assert deserialize(serialize(node)).left.left.val == 'left.left'''
 
+import json
+import pprint as p
 class Node:
     def __init__(self, val, left=None, right=None):
         self.val = val
@@ -24,3 +26,11 @@ class Node:
 
 node = Node('root', Node('left',Node('left.left')),Node('right'))
 
+ser = {"node":""}
+def serialise(node):
+    ser[node] = node.val
+
+    print(p.pprint(ser))
+    
+
+serialise(node)
